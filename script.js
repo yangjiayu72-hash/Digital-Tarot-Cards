@@ -58,15 +58,92 @@ const state = {
         future: null
     },
     selectedForSwap: null,
-    audioContext: null
+    audioContext: null,
+    selectedDeck: null
 };
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
     initializeAudio();
-    renderDeck();
-    setupDragAndDrop();
+    // Don't render deck or setup drag-and-drop until deck is selected
 });
+
+// Deck Selection Functions
+function selectDeck(deckName) {
+    state.selectedDeck = deckName;
+
+    // Apply deck theme to body
+    document.body.className = '';
+    document.body.classList.add(`deck-${deckName}`);
+
+    // Hide selection screen with fade out
+    const selectionScreen = document.getElementById('deckSelection');
+    selectionScreen.style.opacity = '0';
+    selectionScreen.style.transition = 'opacity 0.5s ease-out';
+
+    setTimeout(() => {
+        selectionScreen.style.display = 'none';
+
+        // Show main container
+        const mainContainer = document.getElementById('mainContainer');
+        mainContainer.style.display = 'block';
+        mainContainer.style.opacity = '0';
+
+        // Fade in main container
+        setTimeout(() => {
+            mainContainer.style.transition = 'opacity 0.5s ease-in';
+            mainContainer.style.opacity = '1';
+        }, 50);
+
+        // Initialize the tarot reading
+        renderDeck();
+        setupDragAndDrop();
+    }, 500);
+}
+
+function changeDeck() {
+    // Reset state
+    state.placedCards = {
+        past: null,
+        present: null,
+        future: null
+    };
+    state.selectedForSwap = null;
+    state.selectedDeck = null;
+
+    // Clear slots
+    document.querySelectorAll('.slot-content').forEach(slot => {
+        slot.innerHTML = '';
+        slot.classList.remove('filled', 'locked');
+    });
+
+    // Hide result panel
+    const resultPanel = document.getElementById('resultPanel');
+    resultPanel.classList.remove('visible');
+
+    // Hide main container
+    const mainContainer = document.getElementById('mainContainer');
+    mainContainer.style.opacity = '0';
+    mainContainer.style.transition = 'opacity 0.5s ease-out';
+
+    setTimeout(() => {
+        mainContainer.style.display = 'none';
+
+        // Show selection screen
+        const selectionScreen = document.getElementById('deckSelection');
+        selectionScreen.style.display = 'flex';
+        selectionScreen.style.opacity = '0';
+
+        setTimeout(() => {
+            selectionScreen.style.transition = 'opacity 0.5s ease-in';
+            selectionScreen.style.opacity = '1';
+        }, 50);
+    }, 500);
+}
+
+// Make functions available globally
+window.selectDeck = selectDeck;
+window.changeDeck = changeDeck;
 
 // Render Card Deck
 function renderDeck() {

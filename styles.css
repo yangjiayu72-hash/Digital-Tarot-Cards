@@ -348,6 +348,284 @@ body {
     filter: brightness(1.1);
 }
 
+/* Deck Selection Screen */
+.deck-selection-screen {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.selection-title {
+    font-size: 3em;
+    color: #f8e9d1;
+    text-shadow: 0 0 30px rgba(248, 233, 209, 0.6);
+    letter-spacing: 4px;
+    margin-bottom: 15px;
+    animation: fadeIn 1s ease-in;
+}
+
+.selection-subtitle {
+    font-size: 1.2em;
+    color: #c4a77d;
+    font-style: italic;
+    margin-bottom: 60px;
+    animation: fadeIn 1.5s ease-in;
+}
+
+.deck-options {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1400px;
+}
+
+.deck-option {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(196, 167, 125, 0.3);
+    border-radius: 20px;
+    padding: 30px;
+    width: 320px;
+    text-align: center;
+    transition: all 0.4s ease;
+    animation: fadeInUp 1s ease-out;
+    backdrop-filter: blur(5px);
+}
+
+.deck-option:hover {
+    transform: translateY(-10px);
+    border-color: #f8e9d1;
+    box-shadow: 0 15px 40px rgba(248, 233, 209, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.deck-preview {
+    width: 100%;
+    height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+.preview-card {
+    width: 180px;
+    height: 260px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.deck-option:hover .preview-card {
+    transform: scale(1.05) rotateY(5deg);
+}
+
+.preview-symbol {
+    font-size: 4em;
+    z-index: 2;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.preview-pattern {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.2;
+    z-index: 1;
+}
+
+/* Mystic Rose Theme */
+.mystic-rose-preview {
+    background: linear-gradient(135deg, rgba(255, 182, 193, 0.2) 0%, rgba(255, 192, 203, 0.3) 100%);
+}
+
+.mystic-rose-preview .preview-card {
+    background: linear-gradient(135deg, #ffd5d5 0%, #ffb6c1 50%, #ffa8ba 100%);
+    border: 3px solid #d4a5b0;
+}
+
+.mystic-rose-preview .preview-pattern {
+    background-image:
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.4) 2px, transparent 2px),
+        radial-gradient(circle at 80% 70%, rgba(212, 165, 176, 0.4) 3px, transparent 3px);
+    background-size: 30px 30px, 40px 40px;
+}
+
+/* Celestial Night Theme */
+.celestial-night-preview {
+    background: linear-gradient(135deg, rgba(72, 61, 139, 0.2) 0%, rgba(106, 90, 205, 0.3) 100%);
+}
+
+.celestial-night-preview .preview-card {
+    background: linear-gradient(135deg, #2c2c54 0%, #1a1a2e 50%, #16213e 100%);
+    border: 3px solid #6a5acd;
+}
+
+.celestial-night-preview .preview-symbol {
+    color: #fff;
+}
+
+.celestial-night-preview .preview-pattern {
+    background-image:
+        radial-gradient(circle, rgba(255, 255, 255, 0.8) 1px, transparent 1px),
+        radial-gradient(circle at 30% 40%, rgba(106, 90, 205, 0.6) 2px, transparent 2px);
+    background-size: 50px 50px, 70px 70px;
+}
+
+/* Golden Oracle Theme */
+.golden-oracle-preview {
+    background: linear-gradient(135deg, rgba(218, 165, 32, 0.2) 0%, rgba(255, 215, 0, 0.3) 100%);
+}
+
+.golden-oracle-preview .preview-card {
+    background: linear-gradient(135deg, #ffd700 0%, #daa520 50%, #b8860b 100%);
+    border: 3px solid #8b7355;
+}
+
+.golden-oracle-preview .preview-pattern {
+    background-image:
+        linear-gradient(45deg, rgba(139, 115, 85, 0.3) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(139, 115, 85, 0.3) 25%, transparent 25%);
+    background-size: 40px 40px;
+}
+
+.deck-name {
+    font-size: 1.8em;
+    color: #f8e9d1;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.deck-description {
+    font-size: 1em;
+    color: #b0b0b0;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    min-height: 60px;
+}
+
+.select-deck-btn {
+    background: linear-gradient(135deg, #c4a77d 0%, #a68968 100%);
+    color: #1a1a2e;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Georgia', serif;
+}
+
+.select-deck-btn:hover {
+    background: linear-gradient(135deg, #f8e9d1 0%, #c4a77d 100%);
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(196, 167, 125, 0.5);
+}
+
+.select-deck-btn:active {
+    transform: scale(0.98);
+}
+
+/* Change Deck Button */
+.change-deck-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(196, 167, 125, 0.3);
+    color: #f8e9d1;
+    border: 2px solid rgba(196, 167, 125, 0.5);
+    padding: 10px 20px;
+    font-size: 0.9em;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Georgia', serif;
+    backdrop-filter: blur(5px);
+}
+
+.change-deck-btn:hover {
+    background: rgba(196, 167, 125, 0.5);
+    border-color: #f8e9d1;
+    transform: scale(1.05);
+}
+
+/* Deck Theme Styles for Cards */
+body.deck-mystic-rose .card-back {
+    background: linear-gradient(135deg, #e6b8c2 0%, #d4a5b0 100%);
+    border: 3px solid #c48fa0;
+}
+
+body.deck-mystic-rose .card-back-pattern {
+    background-image: radial-gradient(circle, #ffffff 2px, transparent 2px);
+    opacity: 0.4;
+}
+
+body.deck-celestial-night .card-back {
+    background: linear-gradient(135deg, #2c2c54 0%, #1a1a2e 100%);
+    border: 3px solid #6a5acd;
+}
+
+body.deck-celestial-night .card-back-pattern {
+    background-image: radial-gradient(circle, #ffffff 1px, transparent 1px);
+    opacity: 0.6;
+}
+
+body.deck-celestial-night .card-front {
+    background: linear-gradient(135deg, #4a4a6a 0%, #3a3a5a 50%, #2a2a4a 100%);
+    border: 3px solid #6a5acd;
+}
+
+body.deck-celestial-night .card-name,
+body.deck-celestial-night .card-text {
+    color: #e4e4e4;
+}
+
+body.deck-celestial-night .card-symbol {
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+}
+
+body.deck-golden-oracle .card-back {
+    background: linear-gradient(135deg, #b8860b 0%, #8b7355 100%);
+    border: 3px solid #daa520;
+}
+
+body.deck-golden-oracle .card-back-pattern {
+    background-image: linear-gradient(45deg, rgba(255, 215, 0, 0.3) 25%, transparent 25%);
+    background-size: 20px 20px;
+    opacity: 0.5;
+}
+
+body.deck-golden-oracle .card-front {
+    background: linear-gradient(135deg, #fffacd 0%, #ffeaa7 50%, #f8d99d 100%);
+    border: 3px solid #b8860b;
+}
+
+body.deck-golden-oracle .card-name {
+    color: #8b7355;
+}
+
+body.deck-golden-oracle .card-text {
+    color: #6a5a42;
+}
+
+body.deck-golden-oracle .card-symbol {
+    filter: drop-shadow(0 2px 4px rgba(184, 134, 11, 0.5));
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .reading-area {
@@ -363,5 +641,28 @@ body {
     .card-summary {
         flex-direction: column;
         gap: 15px;
+    }
+
+    .selection-title {
+        font-size: 2em;
+    }
+
+    .selection-subtitle {
+        font-size: 1em;
+    }
+
+    .deck-options {
+        gap: 30px;
+    }
+
+    .deck-option {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .change-deck-btn {
+        position: static;
+        margin: 0 auto 20px;
+        display: block;
     }
 }

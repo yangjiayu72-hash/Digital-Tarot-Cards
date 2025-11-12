@@ -7,8 +7,57 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
+    <!-- Deck Selection Screen -->
+    <div class="deck-selection-screen" id="deckSelection">
+        <h1 class="selection-title">Choose Your Tarot Deck</h1>
+        <p class="selection-subtitle">Each deck carries its own energy and wisdom</p>
+
+        <div class="deck-options">
+            <!-- Mystic Rose Deck -->
+            <div class="deck-option" data-deck="mystic-rose">
+                <div class="deck-preview mystic-rose-preview">
+                    <div class="preview-card">
+                        <div class="preview-symbol">🌹</div>
+                        <div class="preview-pattern"></div>
+                    </div>
+                </div>
+                <h3 class="deck-name">Mystic Rose</h3>
+                <p class="deck-description">Soft and romantic, embracing love and intuition with gentle pink hues</p>
+                <button class="select-deck-btn" onclick="selectDeck('mystic-rose')">Select Deck</button>
+            </div>
+
+            <!-- Celestial Night Deck -->
+            <div class="deck-option" data-deck="celestial-night">
+                <div class="deck-preview celestial-night-preview">
+                    <div class="preview-card">
+                        <div class="preview-symbol">✨</div>
+                        <div class="preview-pattern"></div>
+                    </div>
+                </div>
+                <h3 class="deck-name">Celestial Night</h3>
+                <p class="deck-description">Deep and mysterious, revealing cosmic truths through starlit darkness</p>
+                <button class="select-deck-btn" onclick="selectDeck('celestial-night')">Select Deck</button>
+            </div>
+
+            <!-- Golden Oracle Deck -->
+            <div class="deck-option" data-deck="golden-oracle">
+                <div class="deck-preview golden-oracle-preview">
+                    <div class="preview-card">
+                        <div class="preview-symbol">✧</div>
+                        <div class="preview-pattern"></div>
+                    </div>
+                </div>
+                <h3 class="deck-name">Golden Oracle</h3>
+                <p class="deck-description">Rich and luxurious, channeling ancient wisdom with golden radiance</p>
+                <button class="select-deck-btn" onclick="selectDeck('golden-oracle')">Select Deck</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Tarot Reading Interface -->
+    <div class="container" id="mainContainer" style="display: none;">
         <h1 class="title">Digital Tarot Reading</h1>
+        <button class="change-deck-btn" onclick="changeDeck()">Change Deck</button>
 
         <!-- Reading Slots -->
         <div class="reading-area">
