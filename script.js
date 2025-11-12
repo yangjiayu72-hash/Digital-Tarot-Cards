@@ -151,9 +151,23 @@ function renderDeck() {
     deck.innerHTML = '';
 
     tarotCards.forEach(card => {
-        const cardElement = createCardElement(card, false);
-        deck.appendChild(cardElement);
+        if (!isCardAlreadyPlaced(card.id)) {
+            const cardElement = createCardElement(card, false);
+            cardElement.addEventListener('dragstart', handleCardDragStart);
+            cardElement.addEventListener('dragend', handleCardDragEnd);
+            deck.appendChild(cardElement);
+        }
     });
+}
+
+function handleCardDragStart(e) {
+    e.target.classList.add('dragging');
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/plain', e.target.dataset.cardId);
+}
+
+function handleCardDragEnd(e) {
+    e.target.classList.remove('dragging');
 }
 
 // Create Card Element
@@ -193,23 +207,6 @@ function createCardElement(cardData, isFlipped = false) {
 
 // Setup Drag and Drop
 function setupDragAndDrop() {
-    const deck = document.getElementById('deck');
-
-    // Drag start from deck
-    deck.addEventListener('dragstart', (e) => {
-        if (e.target.classList.contains('card')) {
-            e.target.classList.add('dragging');
-            e.dataTransfer.effectAllowed = 'move';
-            e.dataTransfer.setData('text/html', e.target.dataset.cardId);
-        }
-    });
-
-    deck.addEventListener('dragend', (e) => {
-        if (e.target.classList.contains('card')) {
-            e.target.classList.remove('dragging');
-        }
-    });
-
     // Setup slots
     const slots = document.querySelectorAll('.slot-content');
     slots.forEach(slot => {
@@ -234,6 +231,7 @@ function handleDragLeave(e) {
 
 function handleDrop(e) {
     e.preventDefault();
+    e.stopPropagation();
     this.classList.remove('drag-over');
 
     // Don't allow drop if slot is already filled
@@ -241,12 +239,14 @@ function handleDrop(e) {
         return;
     }
 
-    const cardId = parseInt(e.dataTransfer.getData('text/html'));
+    const cardId = parseInt(e.dataTransfer.getData('text/plain'));
     const cardData = tarotCards.find(c => c.id === cardId);
     const position = this.parentElement.dataset.position;
 
     if (cardData && !isCardAlreadyPlaced(cardId)) {
         placeCard(position, cardData, this);
+        // Re-render deck to remove placed card
+        renderDeck();
     }
 }
 
