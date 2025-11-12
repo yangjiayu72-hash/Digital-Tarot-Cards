@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Tarot Cards</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Digital Tarot Reading</h1>
+
+        <!-- Reading Slots -->
+        <div class="reading-area">
+            <div class="slot" data-position="past">
+                <div class="slot-label">Past</div>
+                <div class="slot-content"></div>
+            </div>
+            <div class="slot" data-position="present">
+                <div class="slot-label">Present</div>
+                <div class="slot-content"></div>
+            </div>
+            <div class="slot" data-position="future">
+                <div class="slot-label">Future</div>
+                <div class="slot-content"></div>
+            </div>
+        </div>
+
+        <!-- Result Panel -->
+        <div class="result-panel" id="resultPanel">
+            <h2>Your Fate</h2>
+            <div class="fate-sentence" id="fateSentence"></div>
+            <div class="card-summary" id="cardSummary"></div>
+        </div>
+
+        <!-- Card Deck -->
+        <div class="deck-area">
+            <h3>Choose Your Cards</h3>
+            <div class="deck" id="deck"></div>
+        </div>
+
+        <!-- Instructions -->
+        <div class="instructions">
+            <p>Drag cards to Past, Present, and Future slots to reveal your fate</p>
+            <p>Click two placed cards to swap them</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
