@@ -4,12 +4,31 @@ An elegant, interactive digital Tarot card reading experience with smooth animat
 
 ## Features
 
+### Deck Selection
+Choose from **three beautifully designed Tarot decks**, each with its own unique aesthetic and energy:
+
+1. **🌹 Mystic Rose** - Soft pink and romantic theme
+   - Gentle, loving energy perfect for matters of the heart
+   - Delicate patterns with warm pink gradients
+   - Ideal for readings focused on relationships and emotions
+
+2. **✨ Celestial Night** - Deep, mysterious dark theme
+   - Cosmic starlit elements with mystical purple hues
+   - Perfect for introspective and spiritual readings
+   - Glowing symbols against dark backgrounds
+
+3. **✧ Golden Oracle** - Rich, luxurious gold theme
+   - Ancient wisdom channeled through golden radiance
+   - Geometric patterns with warm metallic tones
+   - Best for guidance and life direction readings
+
 ### Card Reading Experience
 - **Six Mystical Cards**: The Moon, The Star, The Lovers, The Chariot, Strength, and The High Priestess
 - **Three-Card Spread**: Past, Present, and Future positions
 - **Drag & Drop Interface**: Intuitive card placement with smooth animations
 - **Card Flipping Animation**: Elegant reveal with soft bell sounds
 - **Automatic Fate Generation**: Three card sentences combine into a unique destiny reading
+- **Change Deck Option**: Return to deck selection anytime to start fresh
 
 ### Interactive Elements
 - **Card Swapping**: Click two placed cards to exchange their positions
@@ -31,10 +50,12 @@ An elegant, interactive digital Tarot card reading experience with smooth animat
 ## How to Use
 
 1. **Open `index.html`** in your web browser
-2. **Drag cards** from the deck at the bottom into the three slots (Past, Present, Future)
-3. **Watch the magic**: Each card flips to reveal its symbol and poetic message
-4. **See your fate**: When all three slots are filled, your combined destiny appears
-5. **Swap cards** (optional): Click any two placed cards to exchange them and see how your fate changes
+2. **Choose your deck**: Select from Mystic Rose, Celestial Night, or Golden Oracle
+3. **Drag cards** from the deck at the bottom into the three slots (Past, Present, Future)
+4. **Watch the magic**: Each card flips to reveal its symbol and poetic message
+5. **See your fate**: When all three slots are filled, your combined destiny appears
+6. **Swap cards** (optional): Click any two placed cards to exchange them and see how your fate changes
+7. **Change deck** (optional): Click "Change Deck" to select a different theme and start over
 
 ## Technical Details
 
