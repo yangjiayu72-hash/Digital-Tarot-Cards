@@ -161,8 +161,26 @@ body {
     left: 10px;
     right: 10px;
     bottom: 10px;
-    border: 1px solid rgba(196, 167, 125, 0.5);
+    border: 2px solid rgba(196, 167, 125, 0.6);
     border-radius: 8px;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 50% 50%, transparent 30px, rgba(196, 167, 125, 0.1) 31px, transparent 32px),
+        linear-gradient(to right, rgba(196, 167, 125, 0.2) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(196, 167, 125, 0.2) 1px, transparent 1px);
+    background-size: 100% 100%, 20px 20px, 20px 20px;
+    background-position: center, 0 0, 0 0;
+}
+
+.card-back::after {
+    content: '✦';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.5em;
+    color: rgba(196, 167, 125, 0.4);
+    text-shadow: 0 0 10px rgba(196, 167, 125, 0.3);
     pointer-events: none;
 }
 
@@ -170,12 +188,14 @@ body {
     width: 100%;
     height: 100%;
     background-image:
-        radial-gradient(circle at center, #c4a77d 2px, transparent 2px),
-        radial-gradient(circle at 25% 25%, rgba(196, 167, 125, 0.3) 1px, transparent 1px),
-        radial-gradient(circle at 75% 75%, rgba(196, 167, 125, 0.3) 1px, transparent 1px);
-    background-size: 40px 40px, 20px 20px, 20px 20px;
-    background-position: 0 0, 10px 10px, 10px 10px;
-    opacity: 0.4;
+        radial-gradient(circle at 15% 15%, rgba(196, 167, 125, 0.2) 8px, transparent 8px),
+        radial-gradient(circle at 85% 15%, rgba(196, 167, 125, 0.2) 8px, transparent 8px),
+        radial-gradient(circle at 15% 85%, rgba(196, 167, 125, 0.2) 8px, transparent 8px),
+        radial-gradient(circle at 85% 85%, rgba(196, 167, 125, 0.2) 8px, transparent 8px),
+        repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(196, 167, 125, 0.05) 10px, rgba(196, 167, 125, 0.05) 11px),
+        repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(196, 167, 125, 0.05) 10px, rgba(196, 167, 125, 0.05) 11px);
+    background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+    opacity: 0.6;
 }
 
 .card-front {
@@ -207,10 +227,13 @@ body {
     right: 0;
     bottom: 0;
     background-image:
-        radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.3) 1px, transparent 1px),
-        radial-gradient(circle at 90% 80%, rgba(212, 165, 176, 0.2) 1px, transparent 1px);
-    background-size: 30px 30px;
-    opacity: 0.5;
+        radial-gradient(circle at 20px 20px, rgba(255, 255, 255, 0.3) 3px, transparent 3px),
+        radial-gradient(circle at calc(100% - 20px) 20px, rgba(255, 255, 255, 0.3) 3px, transparent 3px),
+        radial-gradient(circle at 20px calc(100% - 20px), rgba(255, 255, 255, 0.3) 3px, transparent 3px),
+        radial-gradient(circle at calc(100% - 20px) calc(100% - 20px), rgba(255, 255, 255, 0.3) 3px, transparent 3px),
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(212, 165, 176, 0.08) 2px, rgba(212, 165, 176, 0.08) 4px);
+    background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+    opacity: 0.7;
     pointer-events: none;
 }
 
@@ -647,134 +670,231 @@ body {
 
 /* Deck Theme Styles for Cards */
 body.deck-mystic-rose .card-back {
-    background: linear-gradient(135deg, #ffccd5 0%, #ffb3c6 50%, #ffa3ba 100%);
+    background:
+        radial-gradient(circle at 50% 20%, rgba(255, 182, 193, 0.3) 0%, transparent 30%),
+        radial-gradient(circle at 50% 80%, rgba(255, 182, 193, 0.3) 0%, transparent 30%),
+        linear-gradient(135deg, #ffccd5 0%, #ffb3c6 50%, #ffa3ba 100%);
     border: 4px double #d4a5b0;
 }
 
 body.deck-mystic-rose .card-back::before {
-    border-color: rgba(255, 255, 255, 0.6);
+    border-color: rgba(255, 192, 203, 0.8);
+    background:
+        radial-gradient(ellipse at 50% 50%, transparent 25px, rgba(255, 192, 203, 0.15) 26px, transparent 35px),
+        repeating-radial-gradient(circle at 50% 50%, transparent 0px, transparent 15px, rgba(255, 192, 203, 0.1) 15px, rgba(255, 192, 203, 0.1) 16px);
+}
+
+body.deck-mystic-rose .card-back::after {
+    content: '🌹';
+    font-size: 2em;
+    text-shadow: 0 0 15px rgba(255, 192, 203, 0.5);
 }
 
 body.deck-mystic-rose .card-back-pattern {
     background-image:
-        radial-gradient(circle at center, rgba(255, 255, 255, 0.6) 3px, transparent 3px),
-        radial-gradient(circle at 20% 30%, rgba(212, 165, 176, 0.4) 2px, transparent 2px),
-        radial-gradient(circle at 80% 70%, rgba(212, 165, 176, 0.4) 2px, transparent 2px);
-    background-size: 50px 50px, 25px 25px, 25px 25px;
-    opacity: 0.5;
+        radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.4) 6px, transparent 6px),
+        radial-gradient(circle at 85% 15%, rgba(255, 255, 255, 0.4) 6px, transparent 6px),
+        radial-gradient(circle at 15% 85%, rgba(255, 255, 255, 0.4) 6px, transparent 6px),
+        radial-gradient(circle at 85% 85%, rgba(255, 255, 255, 0.4) 6px, transparent 6px),
+        radial-gradient(circle at 50% 15%, rgba(212, 165, 176, 0.3) 4px, transparent 4px),
+        radial-gradient(circle at 50% 85%, rgba(212, 165, 176, 0.3) 4px, transparent 4px),
+        radial-gradient(circle at 15% 50%, rgba(212, 165, 176, 0.3) 4px, transparent 4px),
+        radial-gradient(circle at 85% 50%, rgba(212, 165, 176, 0.3) 4px, transparent 4px),
+        repeating-linear-gradient(45deg, transparent, transparent 8px, rgba(255, 192, 203, 0.1) 8px, rgba(255, 192, 203, 0.1) 9px);
+    background-size: 100% 100%;
+    opacity: 0.7;
 }
 
 body.deck-mystic-rose .card-front {
-    background: linear-gradient(135deg, #ffeef5 0%, #ffd5e5 50%, #ffcce0 100%);
+    background:
+        radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.4) 0%, transparent 40%),
+        linear-gradient(135deg, #ffeef5 0%, #ffd5e5 50%, #ffcce0 100%);
     border-color: #e8b4c8;
 }
 
+body.deck-mystic-rose .card-front::after {
+    background-image:
+        radial-gradient(circle at 20px 20px, rgba(255, 182, 193, 0.25) 5px, transparent 5px),
+        radial-gradient(circle at calc(100% - 20px) 20px, rgba(255, 182, 193, 0.25) 5px, transparent 5px),
+        radial-gradient(circle at 20px calc(100% - 20px), rgba(255, 182, 193, 0.25) 5px, transparent 5px),
+        radial-gradient(circle at calc(100% - 20px) calc(100% - 20px), rgba(255, 182, 193, 0.25) 5px, transparent 5px),
+        repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255, 192, 203, 0.1) 3px, rgba(255, 192, 203, 0.1) 5px);
+}
+
 body.deck-mystic-rose .card-symbol {
-    background: radial-gradient(circle, rgba(255, 192, 203, 0.4) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255, 192, 203, 0.5) 0%, transparent 70%);
+    box-shadow: 0 0 20px rgba(255, 192, 203, 0.3);
 }
 
 body.deck-celestial-night .card-back {
-    background: linear-gradient(135deg, #1a1a3e 0%, #0f1624 50%, #0a0a1a 100%);
+    background:
+        radial-gradient(circle at 30% 20%, rgba(106, 90, 205, 0.2) 0%, transparent 30%),
+        radial-gradient(circle at 70% 80%, rgba(75, 0, 130, 0.2) 0%, transparent 30%),
+        linear-gradient(135deg, #1a1a3e 0%, #0f1624 50%, #0a0a1a 100%);
     border: 4px double #6a5acd;
-    box-shadow: 0 0 20px rgba(106, 90, 205, 0.3);
+    box-shadow: 0 0 25px rgba(106, 90, 205, 0.4);
 }
 
 body.deck-celestial-night .card-back::before {
-    border-color: rgba(106, 90, 205, 0.5);
+    border-color: rgba(138, 43, 226, 0.7);
+    background:
+        radial-gradient(ellipse at 50% 50%, transparent 30px, rgba(106, 90, 205, 0.2) 31px, transparent 40px),
+        conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(106, 90, 205, 0.1) 45deg, transparent 90deg, rgba(106, 90, 205, 0.1) 135deg, transparent 180deg, rgba(106, 90, 205, 0.1) 225deg, transparent 270deg, rgba(106, 90, 205, 0.1) 315deg, transparent 360deg);
+}
+
+body.deck-celestial-night .card-back::after {
+    content: '✨';
+    font-size: 2.2em;
+    text-shadow: 0 0 20px rgba(138, 43, 226, 0.8), 0 0 10px rgba(255, 255, 255, 0.5);
+    animation: twinkle 2s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.1); }
 }
 
 body.deck-celestial-night .card-back-pattern {
     background-image:
-        radial-gradient(circle, rgba(255, 255, 255, 0.9) 1.5px, transparent 1.5px),
-        radial-gradient(circle at 20% 30%, rgba(106, 90, 205, 0.4) 2px, transparent 2px),
-        radial-gradient(circle at 60% 70%, rgba(138, 43, 226, 0.3) 1px, transparent 1px),
-        radial-gradient(circle at 85% 15%, rgba(255, 255, 255, 0.6) 1px, transparent 1px);
-    background-size: 80px 80px, 40px 40px, 60px 60px, 100px 100px;
-    opacity: 0.7;
+        radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.8) 2px, transparent 2px),
+        radial-gradient(circle at 85% 15%, rgba(255, 255, 255, 0.6) 1.5px, transparent 1.5px),
+        radial-gradient(circle at 15% 85%, rgba(255, 255, 255, 0.7) 1.5px, transparent 1.5px),
+        radial-gradient(circle at 85% 85%, rgba(255, 255, 255, 0.8) 2px, transparent 2px),
+        radial-gradient(circle at 25% 40%, rgba(138, 43, 226, 0.5) 1.5px, transparent 1.5px),
+        radial-gradient(circle at 75% 60%, rgba(106, 90, 205, 0.5) 1px, transparent 1px),
+        radial-gradient(circle at 45% 25%, rgba(255, 255, 255, 0.4) 1px, transparent 1px),
+        radial-gradient(circle at 65% 75%, rgba(255, 255, 255, 0.5) 1.5px, transparent 1.5px),
+        radial-gradient(circle at 35% 65%, rgba(138, 43, 226, 0.4) 1px, transparent 1px),
+        radial-gradient(circle at 55% 35%, rgba(106, 90, 205, 0.4) 1px, transparent 1px),
+        repeating-linear-gradient(120deg, transparent, transparent 15px, rgba(106, 90, 205, 0.05) 15px, rgba(106, 90, 205, 0.05) 16px);
+    background-size: 100% 100%;
+    opacity: 0.9;
 }
 
 body.deck-celestial-night .card-front {
-    background: linear-gradient(135deg, #2d2d4a 0%, #1f1f3a 50%, #151530 100%);
+    background:
+        radial-gradient(circle at 70% 30%, rgba(106, 90, 205, 0.3) 0%, transparent 40%),
+        linear-gradient(135deg, #2d2d4a 0%, #1f1f3a 50%, #151530 100%);
     border: 4px double #7a6acd;
 }
 
 body.deck-celestial-night .card-front::before {
-    border-color: rgba(122, 106, 205, 0.5);
+    border-color: rgba(138, 43, 226, 0.6);
+    background:
+        repeating-radial-gradient(circle at 50% 50%, transparent 0px, transparent 18px, rgba(106, 90, 205, 0.1) 18px, rgba(106, 90, 205, 0.1) 20px);
 }
 
 body.deck-celestial-night .card-front::after {
     background-image:
-        radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-        radial-gradient(circle at 90% 80%, rgba(106, 90, 205, 0.2) 1px, transparent 1px);
+        radial-gradient(circle at 20px 20px, rgba(138, 43, 226, 0.3) 3px, transparent 3px),
+        radial-gradient(circle at calc(100% - 20px) 20px, rgba(138, 43, 226, 0.3) 3px, transparent 3px),
+        radial-gradient(circle at 20px calc(100% - 20px), rgba(138, 43, 226, 0.3) 3px, transparent 3px),
+        radial-gradient(circle at calc(100% - 20px) calc(100% - 20px), rgba(138, 43, 226, 0.3) 3px, transparent 3px),
+        radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.15) 1px, transparent 1px),
+        radial-gradient(circle at 70% 60%, rgba(255, 255, 255, 0.2) 1.5px, transparent 1.5px),
+        radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 80px 80px, 60px 60px, 100px 100px;
 }
 
 body.deck-celestial-night .card-name,
 body.deck-celestial-night .card-text {
     color: #e8e8f5;
-    text-shadow: 0 0 10px rgba(106, 90, 205, 0.3);
+    text-shadow: 0 0 12px rgba(138, 43, 226, 0.5);
 }
 
 body.deck-celestial-night .card-name {
-    border-bottom-color: rgba(228, 228, 245, 0.3);
+    border-bottom-color: rgba(138, 43, 226, 0.4);
 }
 
 body.deck-celestial-night .card-symbol {
-    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.6));
-    background: radial-gradient(circle, rgba(106, 90, 205, 0.3) 0%, transparent 70%);
+    filter: drop-shadow(0 0 15px rgba(138, 43, 226, 0.8)) drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+    background: radial-gradient(circle, rgba(106, 90, 205, 0.4) 0%, transparent 70%);
+    box-shadow: 0 0 25px rgba(106, 90, 205, 0.5);
 }
 
 body.deck-celestial-night .card-text {
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(106, 90, 205, 0.3);
 }
 
 body.deck-golden-oracle .card-back {
-    background: linear-gradient(135deg, #d4af37 0%, #b8932e 50%, #9b7928 100%);
+    background:
+        radial-gradient(ellipse at 50% 0%, rgba(255, 215, 0, 0.2) 0%, transparent 40%),
+        radial-gradient(ellipse at 50% 100%, rgba(184, 134, 11, 0.2) 0%, transparent 40%),
+        linear-gradient(135deg, #d4af37 0%, #b8932e 50%, #9b7928 100%);
     border: 4px double #daa520;
-    box-shadow: 0 0 20px rgba(218, 165, 32, 0.3);
+    box-shadow: 0 0 25px rgba(218, 165, 32, 0.4);
 }
 
 body.deck-golden-oracle .card-back::before {
-    border-color: rgba(255, 215, 0, 0.6);
+    border-color: rgba(255, 215, 0, 0.8);
+    background:
+        repeating-conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(255, 215, 0, 0.15) 22.5deg, transparent 45deg),
+        radial-gradient(ellipse at 50% 50%, transparent 20px, rgba(218, 165, 32, 0.2) 21px, transparent 35px);
+}
+
+body.deck-golden-oracle .card-back::after {
+    content: '◆';
+    font-size: 3em;
+    color: rgba(255, 215, 0, 0.5);
+    text-shadow: 0 0 20px rgba(218, 165, 32, 0.6);
 }
 
 body.deck-golden-oracle .card-back-pattern {
     background-image:
-        repeating-linear-gradient(45deg, rgba(255, 215, 0, 0.4) 0px, rgba(255, 215, 0, 0.4) 2px, transparent 2px, transparent 10px),
-        repeating-linear-gradient(-45deg, rgba(139, 115, 85, 0.3) 0px, rgba(139, 115, 85, 0.3) 2px, transparent 2px, transparent 10px),
-        radial-gradient(circle at center, rgba(255, 215, 0, 0.3) 3px, transparent 3px);
-    background-size: 20px 20px, 20px 20px, 50px 50px;
-    opacity: 0.6;
+        linear-gradient(45deg, transparent 30%, rgba(255, 215, 0, 0.15) 30%, rgba(255, 215, 0, 0.15) 32%, transparent 32%, transparent 68%, rgba(255, 215, 0, 0.15) 68%, rgba(255, 215, 0, 0.15) 70%, transparent 70%),
+        linear-gradient(-45deg, transparent 30%, rgba(184, 134, 11, 0.15) 30%, rgba(184, 134, 11, 0.15) 32%, transparent 32%, transparent 68%, rgba(184, 134, 11, 0.15) 68%, rgba(184, 134, 11, 0.15) 70%, transparent 70%),
+        radial-gradient(circle at 15% 15%, rgba(255, 215, 0, 0.3) 5px, transparent 5px),
+        radial-gradient(circle at 85% 15%, rgba(255, 215, 0, 0.3) 5px, transparent 5px),
+        radial-gradient(circle at 15% 85%, rgba(255, 215, 0, 0.3) 5px, transparent 5px),
+        radial-gradient(circle at 85% 85%, rgba(255, 215, 0, 0.3) 5px, transparent 5px),
+        repeating-linear-gradient(0deg, transparent, transparent 5px, rgba(139, 115, 85, 0.15) 5px, rgba(139, 115, 85, 0.15) 6px),
+        repeating-linear-gradient(90deg, transparent, transparent 5px, rgba(139, 115, 85, 0.15) 5px, rgba(139, 115, 85, 0.15) 6px);
+    background-size: 40px 40px, 40px 40px, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+    opacity: 0.7;
 }
 
 body.deck-golden-oracle .card-front {
-    background: linear-gradient(135deg, #fffdf7 0%, #fff4d4 50%, #ffe8b8 100%);
+    background:
+        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.5) 0%, transparent 30%),
+        radial-gradient(circle at 20% 80%, rgba(218, 165, 32, 0.15) 0%, transparent 40%),
+        linear-gradient(135deg, #fffdf7 0%, #fff4d4 50%, #ffe8b8 100%);
     border: 4px double #c4a574;
 }
 
 body.deck-golden-oracle .card-front::before {
-    border-color: rgba(196, 165, 116, 0.5);
+    border-color: rgba(218, 165, 32, 0.6);
+    background:
+        conic-gradient(from 45deg at 50% 50%, transparent 0deg, rgba(218, 165, 32, 0.1) 30deg, transparent 60deg, rgba(218, 165, 32, 0.1) 120deg, transparent 150deg, rgba(218, 165, 32, 0.1) 210deg, transparent 240deg, rgba(218, 165, 32, 0.1) 300deg, transparent 330deg);
 }
 
 body.deck-golden-oracle .card-front::after {
     background-image:
-        radial-gradient(circle at 10% 20%, rgba(218, 165, 32, 0.15) 1px, transparent 1px),
-        radial-gradient(circle at 90% 80%, rgba(184, 134, 11, 0.15) 1px, transparent 1px);
+        radial-gradient(circle at 20px 20px, rgba(218, 165, 32, 0.25) 4px, transparent 4px),
+        radial-gradient(circle at calc(100% - 20px) 20px, rgba(218, 165, 32, 0.25) 4px, transparent 4px),
+        radial-gradient(circle at 20px calc(100% - 20px), rgba(218, 165, 32, 0.25) 4px, transparent 4px),
+        radial-gradient(circle at calc(100% - 20px) calc(100% - 20px), rgba(218, 165, 32, 0.25) 4px, transparent 4px),
+        repeating-linear-gradient(45deg, transparent, transparent 8px, rgba(184, 134, 11, 0.08) 8px, rgba(184, 134, 11, 0.08) 9px),
+        repeating-linear-gradient(-45deg, transparent, transparent 8px, rgba(184, 134, 11, 0.08) 8px, rgba(184, 134, 11, 0.08) 9px);
+    background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
 }
 
 body.deck-golden-oracle .card-name {
     color: #8b6914;
-    text-shadow: 0 1px 2px rgba(218, 165, 32, 0.3);
-    border-bottom-color: rgba(139, 105, 20, 0.3);
+    text-shadow: 0 1px 3px rgba(218, 165, 32, 0.4);
+    border-bottom-color: rgba(218, 165, 32, 0.4);
 }
 
 body.deck-golden-oracle .card-text {
     color: #6a5a42;
-    background: rgba(255, 215, 0, 0.1);
+    background: rgba(255, 215, 0, 0.15);
+    border: 1px solid rgba(218, 165, 32, 0.3);
 }
 
 body.deck-golden-oracle .card-symbol {
-    filter: drop-shadow(0 3px 6px rgba(184, 134, 11, 0.4));
-    background: radial-gradient(circle, rgba(255, 215, 0, 0.3) 0%, transparent 70%);
+    filter: drop-shadow(0 3px 8px rgba(184, 134, 11, 0.5));
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.4) 0%, transparent 70%);
+    box-shadow: 0 0 20px rgba(218, 165, 32, 0.4);
 }
 
 /* Responsive */
