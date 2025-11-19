@@ -96,11 +96,19 @@ body {
     cursor: grab;
     transition: transform 0.3s ease;
     perspective: 1000px;
+    -webkit-perspective: 1000px;
 }
 
 .card.dragging {
-    opacity: 0.5;
+    opacity: 0.8;
     cursor: grabbing;
+    will-change: transform;
+}
+
+.card.dragging .card-inner {
+    transform: rotateY(0deg) !important;
+    -webkit-transform: rotateY(0deg) !important;
+    transition: none;
 }
 
 .card.placed {
@@ -129,11 +137,13 @@ body {
     transition: transform 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
+    transform: rotateY(0deg);
+    -webkit-transform: rotateY(0deg);
 }
 
 .card.flipped .card-inner {
-    transform: rotateY(180deg);
-    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg) !important;
+    -webkit-transform: rotateY(180deg) !important;
 }
 
 .card-face {
@@ -144,12 +154,15 @@ body {
     height: 100%;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
     border-radius: 12px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
 }
 
 .card-back {
@@ -159,7 +172,11 @@ body {
     overflow: hidden;
     transform: rotateY(0deg);
     -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
     z-index: 2;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
 }
 
 .card-back::before {
@@ -211,10 +228,14 @@ body {
     border: 4px double #d4a5b0;
     transform: rotateY(180deg);
     -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
     padding: 15px;
     position: relative;
     overflow: hidden;
     z-index: 1;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
 }
 
 .card-front::before {
@@ -458,9 +479,14 @@ body {
 }
 
 /* Hover Effects */
-.card:not(.placed):hover {
+.card:not(.placed):not(.dragging):hover {
     transform: translateY(-10px) scale(1.05);
     filter: brightness(1.1);
+}
+
+.card:not(.placed):not(.dragging):hover .card-inner {
+    transform: rotateY(0deg);
+    -webkit-transform: rotateY(0deg);
 }
 
 /* Deck Selection Screen */
