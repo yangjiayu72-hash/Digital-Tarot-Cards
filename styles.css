@@ -95,7 +95,7 @@ body {
     position: relative;
     cursor: grab;
     transition: transform 0.3s ease;
-    transform-style: preserve-3d;
+    perspective: 1000px;
 }
 
 .card.dragging {
@@ -128,17 +128,22 @@ body {
     height: 100%;
     transition: transform 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
     transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
 }
 
 .card.flipped .card-inner {
     transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
 }
 
 .card-face {
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
     border-radius: 12px;
     display: flex;
     flex-direction: column;
@@ -152,6 +157,9 @@ body {
     border: 4px double #c4a77d;
     position: relative;
     overflow: hidden;
+    transform: rotateY(0deg);
+    -webkit-transform: rotateY(0deg);
+    z-index: 2;
 }
 
 .card-back::before {
@@ -202,9 +210,11 @@ body {
     background: linear-gradient(135deg, #ffeef5 0%, #ffd5e5 50%, #ffcce0 100%);
     border: 4px double #d4a5b0;
     transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
     padding: 15px;
     position: relative;
     overflow: hidden;
+    z-index: 1;
 }
 
 .card-front::before {
